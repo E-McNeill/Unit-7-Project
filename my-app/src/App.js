@@ -8,6 +8,8 @@ import Gallery from './components/Gallery';
 import Header from './components/Header';
 //import apiKey from './components/config';
 import SearchForm from './components/SearchForm';
+import Nav from './components/Nav';
+
 
 //const api = apiKey;
 
@@ -23,16 +25,23 @@ export default class App extends Component {
 
 //using axios to fetch images
 componentDidMount(props) {
-axios.get('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7f2da04cf3afbf85e0fb619f94a6cb01&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
-// axios.get(`https://farm${this.farmId}.staticflickr.com/${this.server}/${this.key}_${this.secret}.jpg`)
-.then(response => {
-    this.setState({
-      pics: response.data.photos.photo
+  this.performSearch('meerkat');
+  this.performSearch('elephant');
+  this.performSearch('gorilla');
+}
+
+performSearch = (query = 'meerkat') => {
+//  axios.get('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7f2da04cf3afbf85e0fb619f94a6cb01&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
+  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7f2da04cf3afbf85e0fb619f94a6cb01&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+
+  .then(response => {
+      this.setState({
+        pics: response.data.photos.photo
+      });
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error);
     });
-  })
-  .catch(error => {
-    console.log('Error fetching and parsing data', error);
-  });
 }
 
 
@@ -42,8 +51,12 @@ axios.get('https://www.flickr.com/services/rest/?method=flickr.photos.search&api
       <BrowserRouter>
         <div >
           <Header />
-          < SearchForm />
-        </div>
+          </div>
+          <div className="secondPanel">
+          < SearchForm onSearch={this.performSearch}/>
+          <Nav />
+          </div>
+        
         <div className="container">
           <Gallery data={this.state.pics}/>
         </div>

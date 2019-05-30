@@ -1,20 +1,21 @@
 import React from 'react';
 import {Jumbotron} from 'react-bootstrap';
-import Nav from './Nav';
+import {Link} from 'react-router-dom';
 
 
 function Header() {
     return (
         <Jumbotron className="App-header">
          <div className="header-text">
-          <h1 >Erica's Search App</h1>
+          <Link to="/home"><h1>Erica's Search App</h1></Link>
           <p>This is my simple React Search App</p>
           </div>
           
-        <Nav />
+        
         </Jumbotron>
     );
   }
 
   
 export default Header;
+
