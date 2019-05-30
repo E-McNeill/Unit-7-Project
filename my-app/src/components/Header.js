@@ -1,14 +1,17 @@
 import React from 'react';
-import {Container, Jumbotron} from 'react-bootstrap';
-//import '../index.css';
+import {Jumbotron} from 'react-bootstrap';
+import Nav from './Nav';
+
 
 function Header() {
     return (
-        <Jumbotron className="App-header App">
-          <Container >
+        <Jumbotron className="App-header">
+         <div className="header-text">
           <h1 >Erica's Search App</h1>
           <p>This is my simple React Search App</p>
-          </Container>
+          </div>
+          
+        <Nav />
         </Jumbotron>
     );
   }

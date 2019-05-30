@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, FormGroup, FormControl, Button} from 'react-bootstrap';
 
 
-const SearchForm = () => (
-<Form inline className="justify-content-center">
+export default class SearchForm extends Component {
+
+render() {
+  return (
+<Form inline className="justify-content-center" onSubmit={this.handleSubmit}>
   <FormGroup controlId="formInlineEmail" >
     <FormControl type="search" placeholder="search for an image..." />
   </FormGroup>
@@ -12,6 +15,8 @@ const SearchForm = () => (
     search
   </Button>
 </Form>
-);
+  )
+}
+};
 
-export default SearchForm;
+//export default SearchForm;
