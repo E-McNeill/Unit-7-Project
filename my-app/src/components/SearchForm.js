@@ -21,7 +21,7 @@ render() {
   return (
 <Form inline className="justify-content-center" onSubmit={this.handleSubmit}>
   <FormGroup controlId="formInlineEmail" >
-    <FormControl type="search" placeholder="search for an image..." onChange={this.onSearchChange}/>
+    <FormControl type="search" placeholder="search for an image..." onChange={this.onSearchChange} />
   </FormGroup>
   {' '}
   <Button type="submit">
