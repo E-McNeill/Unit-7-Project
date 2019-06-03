@@ -11,7 +11,6 @@ import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 
 
-//const api = apiKey;
 
 export default class App extends Component {
 
@@ -31,8 +30,7 @@ componentDidMount(props) {
 }
 
 performSearch = (query = 'meerkat') => {
-//  axios.get('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=7f2da04cf3afbf85e0fb619f94a6cb01&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
-  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
 
   .then(response => {
       this.setState({
@@ -42,19 +40,21 @@ performSearch = (query = 'meerkat') => {
     .catch(error => {
       console.log('Error fetching and parsing data', error);
     });
+    
 }
 
 
   render() {
-  console.log(this.state.pics);
     return(
+      
       <BrowserRouter>
         <div >
           <Header />
           </div>
           <div className="secondPanel">
-          < SearchForm onSearch={this.performSearch} />
+          <SearchForm onSearch={this.performSearch} />
           <Nav onClick={this.performSearch} />
+          
           </div>
         
         <div className="container">

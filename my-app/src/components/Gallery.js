@@ -26,4 +26,3 @@ const Gallery = props => {
 };
 export default Gallery;
 
-// https://farm{props.farmId}.staticflickr.com/{props.server}/{props.key}_{props.secret}.jpg

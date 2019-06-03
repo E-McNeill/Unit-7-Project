@@ -10,8 +10,6 @@ export default class Nav extends Component {
       onButtonClick = e => {
         // this.setState({ buttonText: e.target.innerText });
         this.props.onClick(e.target.innerText);
-        console.log(e.target.innerText);
-        //console.log(this.e.target.innerText);
         
       }
 render() {
