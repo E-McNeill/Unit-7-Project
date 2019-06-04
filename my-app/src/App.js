@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-// import {BrowserRouter} from 'react-router-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import axios from 'axios';
 //Components//
@@ -11,13 +10,13 @@ import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
 
 
-
 export default class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      pics: []
+      pics: [],
+      query:[]
     };
   }
 
@@ -25,16 +24,15 @@ export default class App extends Component {
 //using axios to fetch images
 componentDidMount(props) {
   this.performSearch();
-  // this.performSearch('elephant');
-  // this.performSearch('gorilla');
 }
-
 performSearch = (query = 'meerkat') => {
+  this.setState({query: query});
 axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
 
   .then(response => {
       this.setState({
-        pics: response.data.photos.photo
+        pics: response.data.photos.photo,
+        
       });
     })
     .catch(error => {
@@ -42,7 +40,6 @@ axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api
     });
     
 }
-
 
   render() {
     return(
@@ -54,11 +51,10 @@ axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api
           <div className="secondPanel">
           <SearchForm onSearch={this.performSearch} />
           <Nav onClick={this.performSearch} />
-          
           </div>
         
         <div className="container">
-          <Gallery data={this.state.pics}/>
+          <Gallery data={this.state.pics} title={this.state.query}/>
         </div>
       
       </BrowserRouter>

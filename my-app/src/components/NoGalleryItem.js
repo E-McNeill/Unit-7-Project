@@ -3,9 +3,9 @@ import React from 'react';
 function NoGalleryItem() {
     return (
         <div >
-            <ul>
+            <li className="not-found">
                 <p>NOTHING TO SEE HERE</p>
-            </ul>
+            </li>
         </div>
     );
   }

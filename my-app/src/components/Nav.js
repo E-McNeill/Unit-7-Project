@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
 export default class Nav extends Component {
-
-    // state = {
-    //     buttonText: ''
-    //   }
       
       onButtonClick = e => {
-        // this.setState({ buttonText: e.target.innerText });
         this.props.onClick(e.target.innerText);
         
       }
@@ -25,5 +20,4 @@ render() {
 }
   }
 
-//export default Nav;
 
