@@ -1,4 +1,5 @@
 import React from 'react';
+import {  Route,} from 'react-router-dom';
 import GalleryItem from './GalleryItem';
 import NoGalleryItem from './NoGalleryItem';
 
@@ -10,9 +11,8 @@ const Gallery = props => {
       <GalleryItem farmId={pic.farm} server={pic.server} key={pic.id} id={pic.id} secret={pic.secret}/>
       );
   } else {
-    photos = <NoGalleryItem />
+    photos = <NoGalleryItem />;
   }
-  
 
   return(
    <div className="photo-container">
@@ -23,5 +23,6 @@ const Gallery = props => {
         </div>
  );
 };
+
 export default Gallery;
 

@@ -1,13 +1,15 @@
 import React from 'react';
 
+
 function NoGalleryItem() {
     return (
-        <div >
             <li className="not-found">
-                <p>NOTHING TO SEE HERE</p>
+                <h1>No result found</h1>
+                <h3>There are no results for your search term, please try again.</h3>
             </li>
-        </div>
     );
   }
 
 export default NoGalleryItem;
+
+

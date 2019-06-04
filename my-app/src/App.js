@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './index.css';
 import axios from 'axios';
 //Components//
@@ -8,15 +8,20 @@ import Header from './components/Header';
 import apiKey from './components/config';
 import SearchForm from './components/SearchForm';
 import Nav from './components/Nav';
+import four from './components/four';
 
 
 export default class App extends Component {
-
+  
   constructor() {
     super();
     this.state = {
       pics: [],
-      query:[]
+      query:[],
+      meerkat: [],
+      elephant: [],
+      gorilla: [],
+      loading: true
     };
   }
 
@@ -24,40 +29,69 @@ export default class App extends Component {
 //using axios to fetch images
 componentDidMount(props) {
   this.performSearch();
+  this.performSearch('meerkat');
+  this.performSearch('gorilla');
+  this.performSearch('elephant');
 }
-performSearch = (query = 'meerkat') => {
+
+
+performSearch = (query ='meerkat') => {
+  
   this.setState({query: query});
 axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
 
   .then(response => {
-      this.setState({
-        pics: response.data.photos.photo,
-        
-      });
+    if (query === 'meerkat'){
+      this.setState({ meerkat: response.data.photos.photo, loading: false });
+     } else if (query === 'elephant'){
+        this.setState({ elephant: response.data.photos.photo, loading: false });
+       } else if  (query === 'gorilla'){
+          this.setState({ gorilla: response.data.photos.photo, loading: false });
+       } else {
+         this.setState({ pics: response.data.photos.photo, loading: false });
+      }
     })
     .catch(error => {
-      console.log('Error fetching and parsing data', error);
+      console.log('Error fetching and parsing data', error)
     });
-    
-}
+  }
+
 
   render() {
     return(
       
       <BrowserRouter>
         <div >
-          <Header />
+          <Header onClick={this.performSearch}/>
           </div>
           <div className="secondPanel">
-          <SearchForm onSearch={this.performSearch} />
+          <SearchForm onSearch={this.performSearch} />         
           <Nav onClick={this.performSearch} />
           </div>
         
         <div className="container">
-          <Gallery data={this.state.pics} title={this.state.query}/>
-        </div>
-      
+        { 
+          (this.state.loading)  
+          ? <h1>Images Loading...</h1> 
+          : 
+          <Switch>
+          <Route exact path="/" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
+          <Route path="/home" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
+          <Route path="/meerkat" render={ () => <Gallery title="Meerkat"  data={this.state.meerkat} /> } />
+          <Route path="/elephant" render={ () => <Gallery title="Elephant"  data={this.state.elephant}  /> } />
+          <Route path="/gorilla" render={ () => <Gallery title="Gorilla"  data={this.state.gorilla} /> } />
+          <Route path="/search/:query" render={ () => <Gallery title={this.state.query}  data={this.state.pics} /> } />
+          {/* <Route component={four}/> */}
+          </Switch>
+        }
+     </div>
+    
       </BrowserRouter>
     );
-  }
+  };
 }
+
+
+
+
+
