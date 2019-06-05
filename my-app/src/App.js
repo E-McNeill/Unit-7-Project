@@ -78,6 +78,7 @@ axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api
           : 
           <Switch>
           <Route path="/home" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
+          <Route exact path="/" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
           <Route path="/meerkat" render={ () => <Gallery title="Meerkat"  data={this.state.meerkat} /> } />
           <Route path="/elephant" render={ () => <Gallery title="Elephant"  data={this.state.elephant}  /> } />
           <Route path="/gorilla" render={ () => <Gallery title="Gorilla"  data={this.state.gorilla} /> } />
