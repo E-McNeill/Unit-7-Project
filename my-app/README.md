@@ -1,9 +1,9 @@
-This application is buit with React and uses Flickr's API to fetch images. 
-Clicking the link at the top of the header will bring you back to /home, with the default search item displayed.
-Clicking any of the 3 nav links will render 24 images related to the topic clicked. 
-The config file is located in the components folder and contains the API key for fetching images from Flickr.
-To view the 404-like error route, manually type into the address bar any non-exisitng route ie. (/abc)
-To view the "loading..." indicator, simply refresh the page. 
+This application is buit with React and uses Flickr's API to fetch images. <br>
+Clicking the link at the top of the header will bring you back to /home, with the default search item displayed.<br>
+Clicking any of the 3 nav links will render 24 images related to the topic clicked. <br>
+The config file is located in the components folder and contains the API key for fetching images from Flickr.<br>
+To view the 404-like error route, manually type into the address bar any non-exisitng route ie. (/abc)<br>
+To view the "loading..." indicator, simply refresh the page. <br>
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
