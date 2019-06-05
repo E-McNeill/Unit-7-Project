@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//renders the page not found component
 function four() {
     return (
             <div className="not-found">

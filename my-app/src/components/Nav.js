@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
+//Navigation section has 3 image options to choose from
 export default class Nav extends Component {
       
       onButtonClick = e => {

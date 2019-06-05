@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 
 
-
+//Search form takes in a query, updates the URL and then the performSearch function is called.
 class SearchForm extends Component {   
 
   handleSubmit = e => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//Renders if there are no photos that match the search term
 function NoGalleryItem() {
     return (
             <li className="not-found">

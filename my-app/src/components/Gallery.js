@@ -2,6 +2,7 @@ import React from 'react';
 import GalleryItem from './GalleryItem';
 import NoGalleryItem from './NoGalleryItem';
 
+//all the photos in the array are cycled through and sent to the Gallery Item to display on screen
 const Gallery = props => {
   const results = props.data;
   let photos;
