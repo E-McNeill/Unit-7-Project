@@ -1,5 +1,4 @@
 import React from 'react';
-import {  Route,} from 'react-router-dom';
 import GalleryItem from './GalleryItem';
 import NoGalleryItem from './NoGalleryItem';
 
@@ -8,7 +7,7 @@ const Gallery = props => {
   let photos;
   if (results.length >0) {
     photos = results.map(pic => 
-      <GalleryItem farmId={pic.farm} server={pic.server} key={pic.id} id={pic.id} secret={pic.secret}/>
+      <GalleryItem farmId={pic.farm} server={pic.server} key={pic.id} id={pic.id} secret={pic.secret} />
       );
   } else {
     photos = <NoGalleryItem />;
@@ -16,7 +15,7 @@ const Gallery = props => {
 
   return(
    <div className="photo-container">
-    <h2>{props.title} Results</h2>
+       <h2>{props.title} Results</h2>
       <ul >
         {photos}
         </ul>

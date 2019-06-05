@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import './index.css';
 import axios from 'axios';
+
 //Components//
 import Gallery from './components/Gallery';
 import Header from './components/Header';
@@ -35,6 +35,8 @@ componentDidMount(props) {
 }
 
 
+
+//search function with default query 'meerkat'
 performSearch = (query ='meerkat') => {
   
   this.setState({query: query});
@@ -59,7 +61,7 @@ axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api
 
   render() {
     return(
-      
+     
       <BrowserRouter>
         <div >
           <Header onClick={this.performSearch}/>
@@ -75,13 +77,12 @@ axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api
           ? <h1>Images Loading...</h1> 
           : 
           <Switch>
-          <Route exact path="/" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
           <Route path="/home" render={ () => <Gallery title="Meerkat" data={this.state.meerkat} /> } />
           <Route path="/meerkat" render={ () => <Gallery title="Meerkat"  data={this.state.meerkat} /> } />
           <Route path="/elephant" render={ () => <Gallery title="Elephant"  data={this.state.elephant}  /> } />
           <Route path="/gorilla" render={ () => <Gallery title="Gorilla"  data={this.state.gorilla} /> } />
-          <Route path="/search/:query" render={ () => <Gallery title={this.state.query}  data={this.state.pics} /> } />
-          {/* <Route component={four}/> */}
+          <Route exact path="/search/*" render={ () => <Gallery title={this.state.query}  data={this.state.pics} /> } />
+          <Route component={four}/>
           </Switch>
         }
      </div>
